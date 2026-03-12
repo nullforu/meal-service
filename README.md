@@ -23,3 +23,7 @@ terraform init
 # terraform plan
 terraform apply
 ```
+
+---
+
+<img width="699" height="948" alt="image" src="https://github.com/user-attachments/assets/3562940d-74da-48f6-a119-a26304ecbf54" />
