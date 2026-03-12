@@ -5,7 +5,10 @@ export interface FormattedDate {
     weekday: string
 }
 
-const getDatePartsInTimeZone = (date: Date, timeZone: string) => {
+const getDatePartsInTimeZone = (
+    date: Date,
+    timeZone: string,
+): { year: string; month: string; day: string } => {
     const parts = new Intl.DateTimeFormat('en-CA', {
         timeZone,
         year: 'numeric',
@@ -13,7 +16,10 @@ const getDatePartsInTimeZone = (date: Date, timeZone: string) => {
         day: '2-digit',
     }).formatToParts(date)
 
-    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]))
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value])) as Record<
+        string,
+        string
+    >
     return {
         year: values.year,
         month: values.month,
