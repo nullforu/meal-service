@@ -12,6 +12,8 @@ npm run build
 
 ## Infrastructure
 
+with AWS Lambda and EventBridge Scheduler, and Terraform is used for infrastructure as Code.
+
 ```bash
 export TF_VAR_neis_key="neis-key"
 export TF_VAR_band_access_token="band-access-token"
