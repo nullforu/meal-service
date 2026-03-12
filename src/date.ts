@@ -5,12 +5,33 @@ export interface FormattedDate {
     weekday: string
 }
 
-export const formatDate = (date: Date): FormattedDate => {
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, '0')
-    const day = String(date.getDate()).padStart(2, '0')
+const getDatePartsInTimeZone = (
+    date: Date,
+    timeZone: string,
+): { year: string; month: string; day: string } => {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    }).formatToParts(date)
+
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value])) as Record<
+        string,
+        string
+    >
+    return {
+        year: values.year,
+        month: values.month,
+        day: values.day,
+    }
+}
+
+export const formatDate = (date: Date, timeZone = 'Asia/Seoul'): FormattedDate => {
+    const { year, month, day } = getDatePartsInTimeZone(date, timeZone)
 
     const weekday = new Intl.DateTimeFormat('ko-KR', {
+        timeZone,
         weekday: 'long',
     }).format(date)
 
