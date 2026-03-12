@@ -17,7 +17,7 @@ Source code: https://github.com/nullforu/meal-service
 
 export const sendMealInfoToBand = async (): Promise<void> => {
     const today = new Date()
-    const { yyyymmdd, month, day, weekday } = formatDate(today)
+    const { yyyymmdd, month, day, weekday } = formatDate(today, 'Asia/Seoul')
 
     const mealInfo = await getMealInfo(yyyymmdd)
     if (!mealInfo) {
@@ -35,8 +35,8 @@ export const sendMealInfoToBand = async (): Promise<void> => {
         const comment = `[영양 정보]\n\n${mealInfo.nutrition}\n\n(급식 정보는 교육청에서 제공하는 데이터를 기반으로 합니다.)`
         await commentToBand(comment, bandKey, postId)
 
-        await sleep(10000)
+        // await sleep(10000)
 
-        await commentToBand(INFO_COMMENT, bandKey, postId)
+        // await commentToBand(INFO_COMMENT, bandKey, postId)
     }
 }
