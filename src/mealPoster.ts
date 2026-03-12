@@ -12,7 +12,7 @@ const INFO_COMMENT = `※ 급식봇이 다시 부활했습니다!
 
 3주간의 발급 시도와 개발자 센터 건의 끝에 발급되어 금일부터 평일 오전 6시 30분에 급식 정보가 작성됩니다.
 
-Source code: ...
+Source code: https://github.com/nullforu/meal-service
 `
 
 export const sendMealInfoToBand = async (): Promise<void> => {
