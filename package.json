@@ -1,0 +1,21 @@
+{
+    "name": "rmqtlrqht",
+    "version": "1.0.0",
+    "type": "module",
+    "private": true,
+    "engines": {
+        "node": ">=22"
+    },
+    "scripts": {
+        "build": "rm -rf dist && esbuild src/handler.ts --bundle --platform=node --target=node22 --format=esm --outfile=dist/index.mjs",
+        "typecheck": "tsc --noEmit",
+        "clean": "rm -f dist/index.js dist/index.mjs dist/package.json",
+        "format": "prettier --write ."
+    },
+    "devDependencies": {
+        "@types/node": "^22.19.15",
+        "esbuild": "^0.25.2",
+        "prettier": "^3.8.1",
+        "typescript": "^5.8.2"
+    }
+}
